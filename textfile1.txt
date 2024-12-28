@@ -1,0 +1,17 @@
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Sample documents
+doc1 = "The quick brown fox jumps over the lazy dog."
+doc2 = "A fast brown fox leaps over a lazy dog."
+
+# Create the CountVectorizer object to convert text to vectors
+vectorizer = CountVectorizer()
+
+# Convert documents to vector form
+vectors = vectorizer.fit_transform([doc1, doc2])
+
+# Compute the cosine similarity
+cosine_sim = cosine_similarity(vectors[0], vectors[1])
+
+print(f"Cosine Similarity: {cosine_sim[0][0]}")

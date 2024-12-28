@@ -1,0 +1,18 @@
+from sklearn.feature_extraction.text import CountVectorizer
+
+def get_ngrams(text, n=2):
+    vectorizer = CountVectorizer(ngram_range=(n, n))
+    ngrams = vectorizer.fit_transform([text])
+    return vectorizer.get_feature_names_out()
+
+# Sample documents
+doc1 = "The quick brown fox jumps over the lazy dog."
+doc2 = "A fast brown fox leaps over a lazy dog."
+
+# Get n-grams (2-grams in this case)
+ngrams_doc1 = get_ngrams(doc1, 2)
+ngrams_doc2 = get_ngrams(doc2, 2)
+
+# Compare n-grams
+common_ngrams = set(ngrams_doc1) & set(ngrams_doc2)
+print(f"Common 2-grams: {common_ngrams}")
